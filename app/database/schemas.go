@@ -9,3 +9,8 @@ CREATE TABLE IF NOT EXISTS products (
 	PRIMARY KEY  (id)
   )
 `
+
+const insertProduct = `
+INSERT INTO PRODUCTS(LABEL, PRICE, QUANTITY)
+VALUES(%s, %d, %d)
+`
