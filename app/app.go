@@ -25,4 +25,6 @@ func New() *App{
 func (a *App) initRoutes() {
 	a.Router.HandleFunc("/", a.IndexHandler()).Methods("GET")
 	a.Router.HandleFunc("/api/products", a.CreateProductHandler()).Methods("POST")
+	a.Router.HandleFunc("/api/products", a.GetProductsHandler()).Methods("GET")
+
 }

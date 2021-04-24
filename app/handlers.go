@@ -43,3 +43,22 @@ func (a *App) CreateProductHandler() http.HandlerFunc {
 		sendResponse(w, r, resp, http.StatusOK)
 	}
 }
+
+func (a *App) GetProductsHandler() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		products, err := a.DB.GetProducts()
+		if err != nil {
+			log.Printf("Cannot get the product, err=%v \n", err)
+			sendResponse(w, r, nil, http.StatusInternalServerError)
+			return
+		}
+
+		var resp = make([]models.ProductResponse, len(products))
+		for i, p := range products {
+			resp[i] = mapProductToJson(p)
+		}
+
+		sendResponse(w, r, resp, http.StatusOK)
+	}
+}
