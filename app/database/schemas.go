@@ -12,5 +12,5 @@ CREATE TABLE IF NOT EXISTS products (
 
 const insertProduct = `
 INSERT INTO PRODUCTS(LABEL, PRICE, QUANTITY)
-VALUES(%s, %d, %d)
+VALUES(?, ?, ?)
 `
